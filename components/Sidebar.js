@@ -20,10 +20,10 @@ export default function Sidebar() {
 
   const { data: session } = useSession();
   return (
-    <div className="hidden sm:flex flex-col p-2 xl:items-start h-screen mr-4 sticky top-0">
+    <div className="sm:flex flex-col sm:p-2 xl:items-start h-screen sm:mr-4 sticky top-0 z-50">
       {/* Twitter Logo */}
       <div
-        className="hoverEffect p-0 hover:bg-blue-100 xl:px-1"
+        className="hoverEffect p-0 hover:bg-blue-100 xl:px-1 hidden sm:inline"
         onClick={() => {
           router.push(`/`);
         }}
@@ -39,7 +39,7 @@ export default function Sidebar() {
 
       {/* Menu */}
 
-      <div className="mt-4 mb-2.5 xl:items-start">
+      <div className="mt-4 mb-2.5 xl:items-start hidden sm:inline">
         <SidebarMenuItem text="Home" Icon={HomeIcon} active />
         <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
         {session && (
@@ -58,18 +58,20 @@ export default function Sidebar() {
 
       {session ? (
         <>
-          <button className="bg-sky-500 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline">
-            Tweet
+          <button
+            className="bg-sky-500 text-white rounded-full w-32 h-8 font-bold shadow-md hover:brightness-95 text-lg absolute xl:inline xl:relative left-[5rem] top-[0.7rem] sm:left-[calc(60%+9rem)] xl:left-0 z-50 xl:w-36 xl:h-12 mdlg:left-[calc(80%+9rem)]"
+            onClick={signOut}
+          >
+            Sign out
           </button>
 
           {/* Mini-profile */}
 
-          <div className="hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto w-max">
+          <div className="hoverEffect text-gray-700 items-center justify-center xl:justify-start mt-auto w-max hidden sm:flex">
             <img
               src={session.user.image}
               alt="user image"
               className="rounded-full  max-w-[40px] xl:mr-2"
-              onClick={signOut}
             />
             <div className="leading-5 lg:hidden xl:inline mdlg:inline hidden">
               <h4 className="font-bold truncate">{session.user.name}</h4>
@@ -80,7 +82,7 @@ export default function Sidebar() {
         </>
       ) : (
         <button
-          className="bg-sky-500 text-white rounded-full w-36 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline"
+          className="bg-sky-500 text-white rounded-full w-32 h-8 font-bold shadow-md hover:brightness-95 text-lg absolute xl:inline xl:relative left-[5rem] top-[0.7rem] sm:left-[calc(60%+9rem)] xl:left-0 z-50 xl:w-36 xl:h-12"
           onClick={signIn}
         >
           Sign in
@@ -89,3 +91,5 @@ export default function Sidebar() {
     </div>
   );
 }
+
+// w-[calc(100%+2rem)]

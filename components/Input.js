@@ -9,7 +9,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getDownloadURL, uploadString, ref } from "firebase/storage";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useState, useRef } from "react";
 
 export default function Input() {
@@ -50,10 +50,6 @@ export default function Input() {
   };
 
   const addImageToPost = (e) => {
-    // const fileSize = fileInput.files.item(0).size;
-    // const fileMb = fileSize / 1024 ** 2;
-    // alert(fileMb);
-
     const reader = new FileReader();
     if (e.target.files[0]) {
       const fileSize = e.target.files[0].size;
@@ -79,7 +75,6 @@ export default function Input() {
             src={session.user.image}
             alt="user image"
             className="h-11 w-11 rounded-full cursor-pointer hover:brightness-95"
-            onClick={signOut}
           />
           <div className="w-full divide-y divide-gray-200">
             <div className="">
