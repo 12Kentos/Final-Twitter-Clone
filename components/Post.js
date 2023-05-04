@@ -96,7 +96,7 @@ export default function Post({ post, id }) {
         <div className="flex items-center justify-between">
           {/* post user info */}
           <div className="flex items-center space-x-1 whitespace-nowrap">
-            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline truncate max-w-[150px]">
+            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline truncate sm:max-w-[150px] max-w-[150px] xs:max-w-[100px]">
               {post?.data()?.name}
             </h4>
             <p className="text-sm sm:text-[15px] hidden xs:flex truncate max-w-[150px]">
