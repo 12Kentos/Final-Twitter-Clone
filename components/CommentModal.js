@@ -45,7 +45,7 @@ export default function CommentModal() {
   };
 
   return (
-    <div>
+    <div className="z-50">
       {open && (
         <Modal
           isOpen={open}
