@@ -22,7 +22,7 @@ export default function Feed() {
   );
 
   return (
-    <div className="border-l border-r xl:min-w-[576px] flex-grow max-w-2xl border-gray-200 justify-center flex flex-col mr-2">
+    <div className="border-l border-r xl:min-w-[576px] flex-grow max-w-2xl border-gray-200 justify-center flex flex-col sm:mr-2">
       <div className="flex py-2 px-3 sticky top-0 bg-white border-b border-gray-200 items-center z-40">
         <h2 className="text-lg sm:text-xl font-bold cursor-pointer">Home</h2>
         <div className="hoverEffect ml-auto w-9 h-9 px-0 flex items-center justify-center">

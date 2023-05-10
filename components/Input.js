@@ -1,5 +1,6 @@
+import { userState } from "@/atom/userAtom";
 import { db, storage } from "@/firebase";
-import { FaceSmileIcon, PhotoIcon } from "@heroicons/react/24/outline";
+import { PhotoIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import {
   addDoc,
@@ -9,15 +10,15 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getDownloadURL, uploadString, ref } from "firebase/storage";
-import { useSession } from "next-auth/react";
 import { useState, useRef } from "react";
+import { useRecoilState } from "recoil";
 
 export default function Input() {
-  const { data: session } = useSession();
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const filePickerRef = useRef(null);
+  const [currentUser] = useRecoilState(userState);
 
   const sendPost = async () => {
     if (loading) return;
@@ -25,12 +26,12 @@ export default function Input() {
     setLoading(true);
 
     const docRef = await addDoc(collection(db, "posts"), {
-      id: session.user.uid,
+      id: currentUser.uid,
       text: input,
-      userImg: session.user.image,
+      userImg: currentUser.userImg,
       timestamp: serverTimestamp(),
-      name: session.user.name,
-      username: session.user.username,
+      name: currentUser.name,
+      username: currentUser.userName,
     });
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
@@ -69,10 +70,10 @@ export default function Input() {
 
   return (
     <>
-      {session && (
+      {currentUser && (
         <div className="flex border-b border-gray-200 p-3 space-x-3">
           <img
-            src={session.user.image}
+            src={currentUser?.userImg}
             alt="user image"
             className="h-11 w-11 rounded-full cursor-pointer hover:brightness-95"
           />
