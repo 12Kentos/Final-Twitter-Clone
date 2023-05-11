@@ -52,6 +52,10 @@ export default function Input() {
 
   const addImageToPost = (e) => {
     const reader = new FileReader();
+    if (!/image/.exec(e.target.files[0].type)) {
+      alert("The file needs to be of type image");
+      return;
+    }
     if (e.target.files[0]) {
       const fileSize = e.target.files[0].size;
       const fileMb = fileSize / 1024 ** 2;
