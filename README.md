@@ -10,7 +10,7 @@ Twitter Clone is an app built to resemble Twitter. This project was built using 
 
 ## Built with
 
-- [Tailwind-Css](https://tailwindcss.com/)
+- [Tailwind-CSS](https://tailwindcss.com/)
 - [NextJs](https://nextjs.org/)
 - [Framer-Motion](https://www.framer.com/motion/)
 - [Firebase](https://firebase.google.com/)
